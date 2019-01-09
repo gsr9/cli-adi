@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,14 +24,32 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { LoginComponent } from './login/login.component';
+
+const appRoutes: Routes = [
+  // { path: 'autores', component: AutoresComponent },
+  // { path: 'libros', component: LibrosComponent },
+  { path: 'login', component: LoginComponent},
+  // { path: 'registro', component: RegistroComponent },
+  // { path: 'usuario', component: UsuariosComponent }
+  // { path: 'hero/:id',      component: HeroDetailComponent },
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     //Material design
     BrowserAnimationsModule,
     FlexLayoutModule,
