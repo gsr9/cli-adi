@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.f.email.value, this.f.password.value)
+    this.loading = true;
   }
 
 
