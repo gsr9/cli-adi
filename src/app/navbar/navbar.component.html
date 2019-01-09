@@ -15,8 +15,8 @@
   </div>
   <div class="nav-web" fxLayout="row">
     <div fxLayoutAlign="center" fxShow="false" fxShow.gt-sm>
-      <button mat-button routerLink="/autores" routerLinkActive="active">Autores</button>
-      <button mat-button routerLink="/libros" routerLinkActive="active">Libros</button>
+      <button *ngIf="logged" mat-button routerLink="/autores" routerLinkActive="active">Autores</button>
+      <button *ngIf="logged" mat-button routerLink="/libros" routerLinkActive="active">Libros</button>
     </div>
   </div>
   <div fxLayoutAlign="end" fxFlex>

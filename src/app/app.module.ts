@@ -25,9 +25,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginComponent } from './login/login.component';
+import { AuthorsComponent } from './authors/authors.component';
 
 const appRoutes: Routes = [
-  // { path: 'autores', component: AutoresComponent },
+   { path: 'autores', component: AuthorsComponent },
   // { path: 'libros', component: LibrosComponent },
   { path: 'login', component: LoginComponent},
   // { path: 'registro', component: RegistroComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    AuthorsComponent
   ],
   imports: [
     RouterModule.forRoot(
