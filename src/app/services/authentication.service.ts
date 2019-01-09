@@ -3,21 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// import { User } from '@/models';
+import { User } from '../models/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    // private currentUserSubject: BehaviorSubject<User>;
-    // public currentUser: Observable<User>;
+    private currentUserSubject: BehaviorSubject<User>;
+    public currentUser: Observable<User>;
 
     constructor(private http: HttpClient) {
-        // this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        // this.currentUser = this.currentUserSubject.asObservable();
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    // public get currentUserValue(): User {
-    //     return this.currentUserSubject.value;
-    // }
+    public get currentUserValue(): User {
+        return this.currentUserSubject.value;
+    }
 
     login(email: string, password: string) {
       console.log("HEMOS LLEGADO HASTA AQUI")
@@ -30,7 +30,8 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user.user));
                     localStorage.setItem('currentToken', user.token);
 
-                    // this.currentUserSubject.next(user);
+                    this.currentUserSubject.next(user.user);
+                    console.log(this.currentUserSubject.getValue())
                 }
 
                 return user;
@@ -40,6 +41,7 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        // this.currentUserSubject.next(null);
+        localStorage.removeItem('currentToken');
+        this.currentUserSubject.next(null);
     }
 }

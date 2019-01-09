@@ -21,12 +21,13 @@
   </div>
   <div fxLayoutAlign="end" fxFlex>
     <button mat-button [mat-menu-trigger-for]="login">
-      Usuario
+      {{username}}
       <mat-icon>expand_more</mat-icon>
     </button>
     <mat-menu x-position="before" #login="matMenu">
-      <button mat-menu-item routerLink="/login">Acceder</button>
-      <button mat-menu-item routerLink="/registro">Registrarse</button>
+      <button *ngIf="!logged" mat-menu-item routerLink="/login">Acceder</button>
+      <button *ngIf="!logged" mat-menu-item routerLink="/registro">Registrarse</button>
+      <button *ngIf="logged" mat-menu-item (click)="logout()">Salir</button>
       <!--<button mat-menu-item>Help</button>-->
     </mat-menu>
   </div>
