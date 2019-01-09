@@ -50,6 +50,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     //Material design
     BrowserAnimationsModule,
     FlexLayoutModule,

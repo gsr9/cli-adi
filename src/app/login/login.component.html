@@ -6,10 +6,10 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div fxFlexAlign="center" fxLayoutAlign="stretch">
           <mat-form-field class="example-full-width">
-            <!-- <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" /> -->
-            <input type="text" matInput placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                <mat-error *ngIf="f.username.errors.required">Por favor introduzca un email válido</mat-error>
+            <!-- <input matInput type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> -->
+            <input type="text" matInput placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <mat-error *ngIf="f.email.errors.required">Por favor introduzca un email válido</mat-error>
             </div>
           </mat-form-field>
         </div>

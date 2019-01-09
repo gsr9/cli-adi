@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
         private route: ActivatedRoute,
-        private router: Router
-        // private authenticationService: AuthenticationService,
+        private router: Router,
+        private authenticationService: AuthenticationService,
         // private alertService: AlertService
       ) { }
 
@@ -30,8 +32,23 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    console.log(this.f.email.value, this.f.password.value)
+    this.submitted = true;
+
+    if(this.loginForm.invalid){
+      return;
+    }
     this.loading = true;
+
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
+      .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate(["/"]);
+            },
+            error => {
+                console.log("ERROR", error);
+                this.loading = false;
+            });
   }
 
 
