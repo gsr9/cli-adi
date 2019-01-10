@@ -18,7 +18,8 @@ import {
   MatInputModule,
   MatIconModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatToolbarModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

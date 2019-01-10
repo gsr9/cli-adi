@@ -1,0 +1,20 @@
+<div fxFlex fxLayoutAlign="center stretch">
+  <mat-nav-list fxFlexAlign="center">
+    <div fxLayoutAlign="center">
+      <h1> Autores </h1>
+    </div>
+    <mat-list-item *ngFor="let author of authors">
+      <img matListAvatar src="{{author.photo}}" alt="autor foto">
+      <span primary mat-line>{{author.name}}</span>
+      <button mat-icon-button (click)="showInfo(author.author_id)">
+        <mat-icon>info</mat-icon>
+      </button>
+      <button mat-icon-button (click)="update(author.author_id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(author.author_id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
