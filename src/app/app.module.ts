@@ -19,14 +19,16 @@ import {
   MatIconModule,
   MatSelectModule,
   MatToolbarModule,
-  MatTableModule
+  MatSnackBarModule,
+  MatDialogModule,
+  MatFormFieldModule
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginComponent } from './login/login.component';
-import { AuthorsComponent } from './authors/authors.component';
+import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
 
 const appRoutes: Routes = [
    { path: 'autores', component: AuthorsComponent },
@@ -39,11 +41,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [AuthorsComponent, UpdateDialog],
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    UpdateDialog
   ],
   imports: [
     RouterModule.forRoot(
@@ -67,7 +71,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

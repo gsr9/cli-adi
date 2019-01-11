@@ -9,3 +9,7 @@ body, html {
 h1 {
   font-family: 'Staatliches';
 }
+
+.green-snackbar {
+   background: #43B443;
+}
