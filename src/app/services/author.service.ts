@@ -25,8 +25,8 @@ export class AuthorService {
     return this.http.get<Author[]>(this.url);
   }
 
-  getById(id: number){
-    return this.http.get<Author>(this.url+id);
+  getById(id: any){
+    return this.http.get<Author>(this.url+`/${id}`);
   }
 
   create(){

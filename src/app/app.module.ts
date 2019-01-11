@@ -29,14 +29,16 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginComponent } from './login/login.component';
 import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 const appRoutes: Routes = [
    { path: 'autores', component: AuthorsComponent },
   // { path: 'libros', component: LibrosComponent },
+  { path: 'autores/:id', component: AuthorDetailComponent },
   { path: 'login', component: LoginComponent},
   // { path: 'registro', component: RegistroComponent },
   // { path: 'usuario', component: UsuariosComponent }
-  // { path: 'hero/:id',      component: HeroDetailComponent },
+  // ,
   // { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     LoginComponent,
     AuthorsComponent,
-    UpdateDialog
+    UpdateDialog,
+    AuthorDetailComponent
   ],
   imports: [
     RouterModule.forRoot(

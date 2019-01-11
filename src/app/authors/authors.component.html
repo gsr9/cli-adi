@@ -6,7 +6,7 @@
     <mat-list-item *ngFor="let author of authors">
       <img matListAvatar src="{{author.photo}}" alt="autor foto">
       <span primary mat-line>{{author.name}}</span>
-      <button mat-icon-button (click)="showInfo(author.author_id)">
+      <button mat-icon-button routerLink="/autores/{{author.author_id}}">
         <mat-icon>info</mat-icon>
       </button>
       <button mat-icon-button (click)="update(author.author_id)">
