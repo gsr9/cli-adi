@@ -14,13 +14,14 @@ export class UploadfileService {
     this.url = "http://localhost:3000/api/fileUpload";
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'multipart/form-data',
         'Authorization': 'Bearer ' + this.authenticationService.currentUserValue.token
       })
     };
   }
 
-  upload(img) {
-    return this.http.post(this.url, img);
+  public upload(file) {
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+    return this.http.post(this.url, formData, this.httpOptions);
   }
 }

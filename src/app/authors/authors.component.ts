@@ -43,7 +43,7 @@ export class AuthorsComponent implements OnInit {
       this.authorService.delete(id).subscribe(
         data => {
           this.authors.splice(this.authors.findIndex((author) => {return author.author_id == id}),1);
-          this.snackBar.open("Autor borrado correctamente","cerrar", {panelClass: ['green-snackbar']})
+          this.snackBar.open("Autor borrado correctamente","Cerrar", {panelClass: ['green-snackbar']})
         },
         err => {
           console.log("ERROR\n", err)

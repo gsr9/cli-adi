@@ -35,19 +35,19 @@
           </mat-form-field>
           <mat-form-field appearance="standard">
             <input type="date" matInput formControlName="birthdate">
-            <mat-error *ngIf="f.birthdate.errors.required">Campo obligatorio</mat-error>
+            <mat-error *ngIf="f.birthdate.errors != null">Campo obligatorio</mat-error>
           </mat-form-field>
           <mat-form-field appearance="standard">
             <textarea matInput placeholder="Biografía" formControlName="biography"></textarea>
-            <mat-error *ngIf="f.biography.errors.required">Campo obligatorio</mat-error>
+            <mat-error *ngIf="f.biography.errors != null">Campo obligatorio</mat-error>
           </mat-form-field>
           <div style="margin-top:5%;" fxLayoutAlign="space-evenly center">
             <input id="file" class="ng-hide" type="file">
-            <img src="{{photo}}" alt="" height="150px" width="150px">
+            <img src="{{photoUrl}}" alt="" height="150px" width="150px">
           </div>
         <div style="margin-top:5%;" fxLayoutAlign="space-evenly">
           <button mat-raised-button color="accent" (click)="back()">Volver</button>
-          <button mat-raised-button color="primary" (click)="create()" cdkFocusInitial>Crear autor</button>
+          <button mat-raised-button color="primary" cdkFocusInitial>Crear autor</button>
         </div>
     </form>
   </div>

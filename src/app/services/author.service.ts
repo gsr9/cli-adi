@@ -29,8 +29,8 @@ export class AuthorService {
     return this.http.get<Author>(this.url+`/${id}`);
   }
 
-  create(){
-
+  create(author: any){
+    return this.http.post(this.url, author, this.httpOptions)
   }
   update(author){
     return this.http.put(this.url+`/${author.author_id}`, JSON.stringify(author), this.httpOptions)

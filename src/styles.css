@@ -12,4 +12,11 @@ h1 {
 
 .green-snackbar {
    background: #43B443;
+   color: white;
+   text-align: center;
+}
+
+.mat-simple-snackbar-action button{
+  color: crimson;
+  text-decoration: underline;
 }

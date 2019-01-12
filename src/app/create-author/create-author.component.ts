@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Author } from '../models/author';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthorService } from '../services/author.service';
+import { UploadfileService } from '../services/uploadfile.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-create-author',
@@ -11,15 +12,18 @@ import { AuthorService } from '../services/author.service';
 })
 export class CreateAuthorComponent implements OnInit {
 
-  author: Author;
+  author: any;
   createAuthorForm: FormGroup;
   photo: any;
+  photoUrl: any;
   submitted = false;
 
   constructor(
     private location: Location,
     private formBuilder: FormBuilder,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private uploadFileService: UploadfileService,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -27,14 +31,13 @@ export class CreateAuthorComponent implements OnInit {
             name: ['', Validators.required],
             birthdate: ['', Validators.required],
             biography: ['', Validators.required],
-            photo: ['', Validators.required],
         });
     document.getElementById('file').addEventListener('change', (data) => {
       this.photo = data.target.files[0];
       var reader = new FileReader();
-      reader.readAsDataURL(data.target.files[0]);
+      reader.readAsDataURL(this.photo);
       reader.onload = (_event) => {
-        this.photo = reader.result;
+        this.photoUrl = reader.result;
       }
     })
   }
@@ -50,9 +53,50 @@ export class CreateAuthorComponent implements OnInit {
     if(this.createAuthorForm.invalid){
       return;
     }
-    if(this.photo != null){
+    this.author = {
+      "name": this.f.name.value,
+      "birthdate": this.f.birthdate.value,
+      "biography": this.f.biography.value
+    }
+console.log(this.photo)
+    if(this.photo){
       //subir la imagen al servidor
+      this.uploadFileService.upload(this.photo).subscribe(
+        data => {
+          console.log(data)
+          this.author.photo = data.path;
+          this.createAUthor()
+        },
+        err => {
+          console.log(err)
+        }
+      )
+    } else {
+      console.log("NANIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+      this.author.photo = null;
+      this.createAUthor()
     }
   }
 
+  createAUthor(){
+    this.authorService.create(this.author).subscribe(
+      data => {
+        console.log(data)
+        //mostrar mensaje autor creado OK y volver a /autores
+        this.snackBar.open("Autor creado correctamente","cerrar",
+        {
+          panelClass: ['green-snackbar'],
+          verticalPosition: "top",
+          horizontalPosition: "center"
+        }).afterDismissed().subscribe(
+          data => {
+            this.location.back();
+          }
+        )
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
 }
