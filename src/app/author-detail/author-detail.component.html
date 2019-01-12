@@ -1,11 +1,11 @@
-<div fxFlex fxLayout="column" fxLayoutAlign="center stretch">
+<div fxFlex fxLayout="column" fxLayoutAlign="center">
   <mat-card fxFlexAlign="center">
     <mat-card-header>
       <mat-card-title><h1>{{author.name}}</h1></mat-card-title>
       <mat-card-subtitle><h3>{{author.birthdate}}</h3></mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content fxFlexAlign="center" fxLayoutAlign="space-evenly">
+    <mat-card-content fxFlexAlign="center" fxLayoutAlign="center">
       <div class="">
         <img src="{{author.photo}}" alt="Foto del autor" width="350px" width="350px">
       </div>
@@ -14,7 +14,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="center">
-      <button mat-raised-button color="accent">Volver</button>
+      <button mat-raised-button (click)="back()" color="accent">Volver</button>
       <button mat-raised-button primary>Libros</button>
     </mat-card-actions>
   </mat-card>

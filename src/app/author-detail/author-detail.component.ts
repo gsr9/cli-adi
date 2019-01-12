@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../models/author';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthorService } from '../services/author.service';
 import { switchMap } from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-author-detail',
@@ -14,7 +15,7 @@ export class AuthorDetailComponent implements OnInit {
   author: Author;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private location: Location,
     private authorService: AuthorService) { }
 
   ngOnInit() {
@@ -27,6 +28,10 @@ export class AuthorDetailComponent implements OnInit {
         console.log(err)
       }
     )
+  }
+
+  back(){
+    this.location.back()
   }
 
 }

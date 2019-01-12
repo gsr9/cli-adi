@@ -30,10 +30,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginComponent } from './login/login.component';
 import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { CreateAuthorComponent } from './create-author/create-author.component';
 
 const appRoutes: Routes = [
    { path: 'autores', component: AuthorsComponent },
   // { path: 'libros', component: LibrosComponent },
+  { path: 'autores/nuevo', component: CreateAuthorComponent },
   { path: 'autores/:id', component: AuthorDetailComponent },
   { path: 'login', component: LoginComponent},
   // { path: 'registro', component: RegistroComponent },
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     LoginComponent,
     AuthorsComponent,
     UpdateDialog,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    CreateAuthorComponent
   ],
   imports: [
     RouterModule.forRoot(
