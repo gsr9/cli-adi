@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Author } from '../models/author';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthorService } from '../services/author.service';
 
 @Component({
   selector: 'app-create-author',
@@ -17,8 +18,9 @@ export class CreateAuthorComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private formBuilder: FormBuilder,) {
-  }
+    private formBuilder: FormBuilder,
+    private authorService: AuthorService
+  ) { }
 
   ngOnInit() {
     this.createAuthorForm = this.formBuilder.group({
@@ -45,9 +47,12 @@ export class CreateAuthorComponent implements OnInit {
 
   create(){
     this.submitted = true;
-    //console.log(this.author, document.getElementById('file').files[0]);
-    this.photo = document.getElementById('file').files[0];
-    console.log(this.f)
+    if(this.createAuthorForm.invalid){
+      return;
+    }
+    if(this.photo != null){
+      //subir la imagen al servidor
+    }
   }
 
 }
