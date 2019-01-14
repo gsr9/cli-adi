@@ -58,12 +58,10 @@ export class CreateAuthorComponent implements OnInit {
       "birthdate": this.f.birthdate.value,
       "biography": this.f.biography.value
     }
-console.log(this.photo)
     if(this.photo){
       //subir la imagen al servidor
       this.uploadFileService.upload(this.photo).subscribe(
         data => {
-          console.log(data)
           this.author.photo = data.path;
           this.createAuthor()
         },
@@ -72,7 +70,6 @@ console.log(this.photo)
         }
       )
     } else {
-      console.log("NANIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
       this.author.photo = null;
       this.createAuthor()
     }
@@ -81,7 +78,6 @@ console.log(this.photo)
   createAuthor(){
     this.authorService.create(this.author).subscribe(
       data => {
-        console.log(data)
         //mostrar mensaje autor creado OK y volver a /autores
         this.snackBar.open("Autor creado correctamente","cerrar",
         {

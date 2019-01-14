@@ -43,7 +43,7 @@ export class BooksComponent implements OnInit {
         authors: this.authors
       }
     });
-    document.getElementById("select").addEventListener('click', (data) => {console.log(dialogRef.componentInstance.data.author)})
+    
     document.getElementById("file").addEventListener('change', (data) => {
       photo = data.target.files[0];
       // console.log(data.srcElement.attributes)

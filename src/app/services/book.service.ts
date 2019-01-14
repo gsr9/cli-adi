@@ -13,7 +13,6 @@ export class BookService {
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
     this.url = "http://localhost:3000/api/books";
-    console.log(this.authenticationService.currentUserValue)
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -34,7 +33,6 @@ export class BookService {
     return this.http.post(this.url, book, this.httpOptions)
   }
   update(book){
-    console.log("UPDATE", book)
     return this.http.put(this.url+`/${book.book_id}`, JSON.stringify(book), this.httpOptions)
   }
   delete(id: number){

@@ -12,7 +12,6 @@ export class AuthorService {
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
     this.url = "http://localhost:3000/api/authors";
-    console.log(this.authenticationService.currentUserValue)
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

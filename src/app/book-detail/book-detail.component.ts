@@ -28,7 +28,6 @@ export class BookDetailComponent implements OnInit {
     this.bookService.getById(id).subscribe(
       data => {
         this.book = data[0];
-        console.log(this.book)
         this.authorService.getById(this.book.author).subscribe(
           author => {
             this.author = author[0]
