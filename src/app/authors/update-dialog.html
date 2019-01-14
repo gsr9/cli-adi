@@ -13,15 +13,13 @@
       <mat-label>Biografía</mat-label>
       <textarea matInput [(ngModel)]="data.biography">{{data.biography}}</textarea>
     </mat-form-field>
-    <!-- <mat-form-field>
-      <mat-label>Foto</mat-label>
-      <input type="file" [(ngModel)]="data.photo" value="{{data.photo}}">
-    </mat-form-field> -->
-
-    <img src="{{data.photo}}" alt="" height="100px" width="100px">
+    <div fxLayoutAlign="space-evenly">
+      <input id="file" class="ng-hide" type="file">
+      <img src="{{data.photo}}" alt="" height="100px" width="100px">
+    </div>
   </div>
   <div mat-dialog-actions >
-    <button mat-button (click)="close()">Cerrar</button>
-    <button mat-button [mat-dialog-close]="data" (click)="update(data)" cdkFocusInitial>Modificar</button>
+    <button mat-raised-button  (click)="close()">Cerrar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="data" (click)="update(data)" cdkFocusInitial>Modificar</button>
   </div>
 </div>

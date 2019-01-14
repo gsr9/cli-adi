@@ -65,7 +65,7 @@ console.log(this.photo)
         data => {
           console.log(data)
           this.author.photo = data.path;
-          this.createAUthor()
+          this.createAuthor()
         },
         err => {
           console.log(err)
@@ -74,11 +74,11 @@ console.log(this.photo)
     } else {
       console.log("NANIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
       this.author.photo = null;
-      this.createAUthor()
+      this.createAuthor()
     }
   }
 
-  createAUthor(){
+  createAuthor(){
     this.authorService.create(this.author).subscribe(
       data => {
         console.log(data)
