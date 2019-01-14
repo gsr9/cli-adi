@@ -1,0 +1,23 @@
+<div fxFlex="70" fxFlexOffset="15" fxLayout="column" fxLayoutAlign="center center" style="margin-top:5%">
+  <mat-card fxFlexAlign="center">
+    <mat-card-header>
+      <mat-card-title>{{book.title}}</mat-card-title>
+      <mat-card-subtitle>- {{author.name}} -</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content fxFlexAlign="center" fxLayoutAlign="center">
+      <div class="">
+        <img src="{{book.cover}}" alt="Foto del autor" width="250px" width="250px">
+        <h5>ISBN: {{book.isbn}}</h5>
+        <h5>Fecha de publicación: {{book.written_date}}</h5>
+      </div>
+      <div class="">
+        <p>{{book.sinopsis}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center">
+      <button mat-raised-button (click)="back()" color="accent">Volver</button>
+      <button mat-raised-button primary disabled>Más libros del autor</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

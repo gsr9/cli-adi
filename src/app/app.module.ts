@@ -33,6 +33,7 @@ import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { CreateAuthorComponent } from './create-author/create-author.component';
 import { BooksComponent, UpdateBookDialog } from './books/books.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 const appRoutes: Routes = [
   { path: 'autores', component: AuthorsComponent },
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
   { path: 'autores/nuevo', component: CreateAuthorComponent },
   { path: 'autores/:id', component: AuthorDetailComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'libros/:id', component: BookDetailComponent },
   // { path: 'registro', component: RegistroComponent },
   // { path: 'usuario', component: UsuariosComponent }
   // ,
@@ -57,7 +59,8 @@ const appRoutes: Routes = [
     AuthorDetailComponent,
     CreateAuthorComponent,
     BooksComponent,
-    UpdateBookDialog
+    UpdateBookDialog,
+    BookDetailComponent
   ],
   imports: [
     RouterModule.forRoot(

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../models/author';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthorService } from '../services/author.service';
-import { switchMap } from 'rxjs/operators';
 import {Location} from '@angular/common';
 
 @Component({
