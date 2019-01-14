@@ -69,6 +69,7 @@ export class AuthorsComponent implements OnInit {
 
     document.getElementById("file").addEventListener('change', (data) => {
       photo = data.target.files[0];
+      // console.log(data.srcElement.attributes)
       var reader = new FileReader();
       reader.readAsDataURL(photo);
       reader.onload = (_event) => {
