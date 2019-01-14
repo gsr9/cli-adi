@@ -32,7 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { CreateAuthorComponent } from './create-author/create-author.component';
-import { BooksComponent } from './books/books.component';
+import { BooksComponent, UpdateBookDialog } from './books/books.component';
 
 const appRoutes: Routes = [
   { path: 'autores', component: AuthorsComponent },
@@ -47,7 +47,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  entryComponents: [AuthorsComponent, UpdateDialog],
+  entryComponents: [AuthorsComponent, UpdateDialog, BooksComponent, UpdateBookDialog],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -56,7 +56,8 @@ const appRoutes: Routes = [
     UpdateDialog,
     AuthorDetailComponent,
     CreateAuthorComponent,
-    BooksComponent
+    BooksComponent,
+    UpdateBookDialog
   ],
   imports: [
     RouterModule.forRoot(

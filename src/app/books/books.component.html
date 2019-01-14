@@ -10,8 +10,8 @@
             <mat-card-title>{{ book.title }}</mat-card-title>
             <mat-card-subtitle>{{ book.author.name || "autor desconocido"}}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image src="{{ book.cover }}" alt="Cover of the book">
-          <mat-card-content>
+          <mat-card-content style="height:20rem" fxLayoutAlign="center center">
+              <img mat-card-image src="{{ book.cover }}" alt="Cover of the book" style="max-height:20rem">
           </mat-card-content>
           <mat-card-actions>
             <button mat-icon-button routerLink="/libros/{{ book. book_id}}">

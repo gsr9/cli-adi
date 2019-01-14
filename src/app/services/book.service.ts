@@ -34,7 +34,8 @@ export class BookService {
     return this.http.post(this.url, book, this.httpOptions)
   }
   update(book){
-    return this.http.put(this.url+`/${book. book_id}`, JSON.stringify(book), this.httpOptions)
+    console.log("UPDATE", book)
+    return this.http.put(this.url+`/${book.book_id}`, JSON.stringify(book), this.httpOptions)
   }
   delete(id: number){
     return this.http.delete(this.url+`/${id}`, this.httpOptions)
