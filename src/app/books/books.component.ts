@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AuthorService } from '../services/author.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UploadfileService } from '../services/uploadfile.service';
+import { BookService } from '../services/book.service';
 
 @Component({
   selector: 'app-books',
@@ -13,16 +13,17 @@ export class BooksComponent implements OnInit {
 
   books: any;
 
-  constructor(http: HttpClient,
+  constructor(
     private authorService: AuthorService,
+    private bookService: BookService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
     public uploadfileService: UploadfileService
   ) {
-    http.get("http://localhost:3000/api/books").subscribe(
+    bookService.getAll().subscribe(
       data => {
         this.books = data;
-        http.get("http://localhost:3000/api/authors").subscribe(
+        authorService.getAll().subscribe(
           authors => {
             var autores :any;
             autores = authors
@@ -37,7 +38,7 @@ export class BooksComponent implements OnInit {
           }
         )
 
-      //  console.log(data)
+       console.log(data)
       },
       err => {
         console.log(err)
@@ -55,7 +56,7 @@ export class BooksComponent implements OnInit {
   delete(id: number){
     if(confirm("¿Seguro que quieres borrar este autor?")) {
       this.bookService.delete(id).subscribe(
-        data => {
+        _data => {
           this.books.splice(this.books.findIndex((book) => {return book.book_id == id}),1);
           this.snackBar.open("Libro borrado correctamente","Cerrar", {panelClass: ['green-snackbar']})
         },
