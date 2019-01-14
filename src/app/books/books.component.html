@@ -1,0 +1,40 @@
+<div fxFlex fxLayoutAlign="center center">
+  <mat-nav-list fxFlexAlign="center" style="width:90%">
+    <div fxLayoutAlign="center">
+      <h1> Libros </h1>
+    </div>
+    <mat-grid-list cols="3" rowHeight="35rem"gutterSize="1rem">
+      <mat-grid-tile *ngFor="let  book of  books">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{ book.title }}</mat-card-title>
+            <mat-card-subtitle>{{ book.author.name || "autor desconocido"}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{ book.cover }}" alt="Cover of the book">
+          <mat-card-content>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button routerLink="/libros/{{ book. book_id}}">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button mat-icon-button (click)="update( book.book_id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete( book.book_id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider></mat-divider>
+    <div fxFlexFill>
+      <button mat-raised-button style="width:100%" routerLink="/autores/nuevo">
+        <mat-list-item>
+          <mat-icon mat-list-icon color="primary">add_circle</mat-icon>
+          <h3 mat-line> Añadir libro </h3>
+        </mat-list-item>
+      </button>
+    </div>
+  </mat-nav-list>
+</div>

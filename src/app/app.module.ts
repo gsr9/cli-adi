@@ -21,7 +21,8 @@ import {
   MatToolbarModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatGridListModule
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -31,10 +32,11 @@ import { LoginComponent } from './login/login.component';
 import { AuthorsComponent, UpdateDialog } from './authors/authors.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { CreateAuthorComponent } from './create-author/create-author.component';
+import { BooksComponent } from './books/books.component';
 
 const appRoutes: Routes = [
-   { path: 'autores', component: AuthorsComponent },
-  // { path: 'libros', component: LibrosComponent },
+  { path: 'autores', component: AuthorsComponent },
+  { path: 'libros', component: BooksComponent },
   { path: 'autores/nuevo', component: CreateAuthorComponent },
   { path: 'autores/:id', component: AuthorDetailComponent },
   { path: 'login', component: LoginComponent},
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     AuthorsComponent,
     UpdateDialog,
     AuthorDetailComponent,
-    CreateAuthorComponent
+    CreateAuthorComponent,
+    BooksComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -79,7 +82,8 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
